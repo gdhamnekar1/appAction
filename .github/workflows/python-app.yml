@@ -29,6 +29,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt || pip install pytest
 
-      # Step 4: Run tests
+      # Step 4: Run tests with PYTHONPATH set
       - name: Run tests
-        run: pytest
+        run: |
+          export PYTHONPATH=$PYTHONPATH:./src
+          pytest
